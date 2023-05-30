@@ -2,25 +2,26 @@ import { Product } from "../../sequelize/database.js";
 import { io } from "../../app.js";
 import { validationResult } from "express-validator";
 export default async function productPost(req, res) {
-  console.log(req.file.filename)
-  const { code, productBrand, productName, model, price } =
-    req.body;
+  const { code, productBrand, productName, model, price } = req.body;
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.json(result.array()) 
+    return res.json(result.array());
   } else {
-    const createProduct =await Product.create({
-      code, productBrand, productName, model, price,productImage: req.file.filename
-    })
+    const createProduct = await Product.create({
+      code,
+      productBrand,
+      productName,
+      model,
+      price,
+      productImage: req.file?.filename ? req.file.filename : null,
+    });
 
     if (createProduct) {
-      return res.json("El producto se ha creado con exito")
-    } else return res.json("Se ha producido un error")
-
+      return res.json("El producto se ha creado con exito");
+    } else return res.json("Se ha producido un error");
   }
   try {
-    let data = !req.file
-     
+    let data = !req.file;
   } catch (error) {
     res.json(error);
   }
