@@ -20,10 +20,10 @@ const imgUpload = multer({ dest: "./storage/productImg" });
 const app = express();
 const httpServer = createServer(app);
 export const storagePath = new URL("./", import.meta.url).pathname + "storage";
-
+console.log(storagePath)
 export const io = new Server(httpServer, {
   cors: {
-    origin: "http://192.168.1.49:3000",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -33,7 +33,7 @@ export const io = new Server(httpServer, {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://192.168.1.49:3000",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );

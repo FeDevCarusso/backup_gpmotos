@@ -6,6 +6,7 @@ import logout from "./logout.js";
 import { storagePath } from "../app.js";
 import register from "./register.js";
 import { User, UserData } from "../sequelize/database.js";
+import { getImagesMiddleware } from "../middlewares/getImages/getImages_index.cjs";
 const router = Router();
 
 //products
@@ -27,9 +28,10 @@ router.use("/logout", logout);
 
 router.get("/images/:image", function (req, res) {
   const { image } = req.params;
-  console.log(image);
+  // console.log(image);
 
-  return res.sendFile(storagePath + `/${image}`);
+ 
+  getImagesMiddleware(image, res)
 });
 
 //gettest

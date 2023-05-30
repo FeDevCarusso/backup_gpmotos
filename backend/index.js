@@ -4,7 +4,7 @@ import { User, sequelize } from "./src/sequelize/database.js";
 
 sequelize
   .sync({
-    force: false,
+    force: true,
     alter: false
   })
   .then(async function (data) {

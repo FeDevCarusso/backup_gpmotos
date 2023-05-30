@@ -12,60 +12,58 @@ var _app = require("../../app.js");
 var _expressValidator = require("express-validator");
 
 function productPost(req, res) {
-  var _req$body, code, productBrand, productName, model, price, productImage, result, data, createdProduct;
+  var _req$body, code, productBrand, productName, model, price, result, createProduct, data;
 
   return regeneratorRuntime.async(function productPost$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _req$body = req.body, code = _req$body.code, productBrand = _req$body.productBrand, productName = _req$body.productName, model = _req$body.model, price = _req$body.price, productImage = _req$body.productImage;
+          console.log(req.file.filename);
+          _req$body = req.body, code = _req$body.code, productBrand = _req$body.productBrand, productName = _req$body.productName, model = _req$body.model, price = _req$body.price;
           result = (0, _expressValidator.validationResult)(req);
 
           if (result.isEmpty()) {
-            _context.next = 4;
+            _context.next = 7;
             break;
           }
 
-          return _context.abrupt("return", res.json(result.array().map(function (err) {
-            return err.msg;
-          })));
+          return _context.abrupt("return", res.json(result.array()));
 
-        case 4:
-          _context.prev = 4;
-          data = !req.file ? {
-            code: code,
-            productBrand: productBrand,
-            productName: productName,
-            model: model,
-            price: price
-          } : {
+        case 7:
+          _context.next = 9;
+          return regeneratorRuntime.awrap(_database.Product.create({
             code: code,
             productBrand: productBrand,
             productName: productName,
             model: model,
             price: price,
             productImage: req.file.filename
-          };
-          _context.next = 8;
-          return regeneratorRuntime.awrap(_database.Product.create(data));
+          }));
 
-        case 8:
-          createdProduct = _context.sent;
-          return _context.abrupt("return", createdProduct ? function () {
-            _app.io.emit("addproduct");
+        case 9:
+          createProduct = _context.sent;
 
-            res.json("Se ha a\xF1adido correctamente ".concat(productName, " ").concat(model, " (").concat(productBrand, ")"));
-          } : res.json("Se ha producido un error al integrar el producto."));
+          if (!createProduct) {
+            _context.next = 14;
+            break;
+          }
 
-        case 12:
-          _context.prev = 12;
-          _context.t0 = _context["catch"](4);
-          res.json(_context.t0);
+          return _context.abrupt("return", res.json("El producto se ha creado con exito"));
+
+        case 14:
+          return _context.abrupt("return", res.json("Se ha producido un error"));
 
         case 15:
+          try {
+            data = !req.file;
+          } catch (error) {
+            res.json(error);
+          }
+
+        case 16:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[4, 12]]);
+  });
 }
