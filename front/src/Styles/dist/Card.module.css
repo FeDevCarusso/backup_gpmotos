@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 5px gray;
+  border-radius: 5px;
+  margin: 7px;
+  width: 15em;
+}
+.card__img {
+  box-shadow: 0 0 5px gray;
+  height: 12em;
+  border-bottom: 1px solid lightgray;
+  padding: 2px;
+  border-radius: 5px 5px 0 0;
+}
+.card__info {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(5, auto);
+  align-items: center;
+  padding: 1em;
+}
+.name {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  text-align: center;
+  margin-bottom: 0.2em;
+}
+.price {
+  margin-top: 0.4em;
+}
+.addCart {
+  width: 0.5em 5em;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px gray;
+  margin: 0.5em 1em;
+  padding: 0.5em;
+}

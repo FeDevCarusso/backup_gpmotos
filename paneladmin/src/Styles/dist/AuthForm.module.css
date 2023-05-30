@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #313133;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border-radius: 5px;
+  width: 20em;
+}
+.input {
+  padding: 0.4em;
+  font-size: large;
+}
+.input:first-child {
+  border-radius: 5px 5px 0 0;
+  border: 1px solid gray;
+  border-bottom: none;
+}
+.input:last-child {
+  border-radius: 0 0 5px 5px;
+  border: 1px solid gray;
+  border-top: none;
+}
+.input_error {
+  color: red;
+}

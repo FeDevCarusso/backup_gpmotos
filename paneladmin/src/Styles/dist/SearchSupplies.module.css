@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-right: 2em;
+  max-height: 34px;
+}
+.searchbar {
+  display: flex;
+  box-shadow: 0 0 15px black;
+  border-radius: 100px;
+  margin-right: 3em;
+  min-width: 478px;
+  max-height: 34px;
+}
+.input,
+.search {
+  font-size: x-large;
+  padding: 0.1em;
+  border: 1px solid gray;
+  outline: none;
+  max-height: 34px;
+}
+.input {
+  border-radius: 100px 0 0 100px;
+  padding-left: 1em;
+  text-align: center;
+  min-width: 390px;
+}
+.search {
+  border-radius: 0 100px 100px 0;
+  width: 100%;
+}
