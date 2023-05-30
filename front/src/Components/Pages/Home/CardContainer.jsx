@@ -11,8 +11,8 @@ const CardContainer = () => {
   const dispatch = useDispatch();
 
   useEffect(function() {
-    socket.on("addproduct", function(){
-      alert("xd")
+    socket.on("addProduct", function(){
+      dispatch(getAllRepuestos())
     })
   })
 

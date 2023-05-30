@@ -7,7 +7,7 @@ var _database = require("./src/sequelize/database.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _database.sequelize.sync({
-  force: true,
+  force: false,
   alter: false
 }).then(function _callee2(data) {
   return regeneratorRuntime.async(function _callee2$(_context2) {

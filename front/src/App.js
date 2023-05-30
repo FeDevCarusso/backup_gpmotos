@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React /* , { useState }*/ from "react";
 import Nav from "./Components/Nav/Nav";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./index.css";
@@ -11,14 +11,18 @@ import CardContainer from "./Components/Pages/Home/CardContainer";
 import Auth from "./Components/Pages/Auth/Auth";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import { socket } from "./config/socket";
-import checkCookie from "./utils/functions/cookieCheck";
+import Footer from "./Components/Footer/Footer";
 function App() {
   const dispatch = useDispatch();
   useEffect(function () {
     dispatch(getAllRepuestos());
     socket.on("connect", function () {
-      checkCookie();
+      console.log("Connection Succefull")
     });
+
+    socket.on("disconnect", function() {
+      console.log("Connection lost.")
+    })
   });
   return (
     <div className="App">
@@ -47,6 +51,7 @@ function App() {
             <Route path="/cart" element={<div>Private</div>} />
           </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

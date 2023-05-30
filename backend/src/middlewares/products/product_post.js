@@ -17,6 +17,7 @@ export default async function productPost(req, res) {
     });
 
     if (createProduct) {
+      io.emit("addProduct")
       return res.json("El producto se ha creado con exito");
     } else return res.json("Se ha producido un error");
   }

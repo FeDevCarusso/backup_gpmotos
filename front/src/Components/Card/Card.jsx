@@ -12,9 +12,9 @@ const Card = ({ repuesto }) => {
       <div className={Styles.card__info}>
         <h4 className={Styles.name}>{repuesto.productName}</h4>
         <h5 className={Styles.brand}>Marca: </h5>
-        <span>{repuesto.productBrand}</span>
+        <span className={Styles.productInfo}>{repuesto.productBrand}</span>
         <h5 className={Styles.model}>Modelo:</h5>
-        <span> {repuesto.model}</span>
+        <span className={Styles.productInfo}> {repuesto.model}</span>
         <h4 className={Styles.price}>{`$${repuesto.price}`}</h4>
       </div>
       <button className={Styles.addCart}>Añadir al carrito</button>
